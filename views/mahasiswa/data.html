@@ -1,0 +1,18 @@
+{{ $nomor := 0 }} {{ range .mahasiswa }}
+<tr>
+  {{ $nomor = increment $nomor 1 }}
+  <td>{{ $nomor }}</td>
+  <td>{{ .FullName }}</td>
+  <td>{{ .Gender }}</td>
+  <td>{{ .Birthplace }}, {{ .Birthdate }}</td>
+  <td>{{ .Address }}</td>
+  <td>
+    <button data-id="{{ .Id }}" class="btn btn-info edit-mahasiswa">
+      Edit
+    </button>
+    <button data-id="{{ .Id }}" class="btn btn-danger delete-mahasiswa">
+      Delete
+    </button>
+  </td>
+</tr>
+{{ end }}

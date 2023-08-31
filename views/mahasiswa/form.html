@@ -1,0 +1,71 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{ .title }}</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form action="/mahasiswa/store" id="form-mahasiswa" method="POST">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Fullname</label>
+          <input
+            type="text"
+            name="txt_fullname"
+            class="form-control"
+            value="{{ .mahasiswa.FullName }}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Gender</label>
+          <select name="txt_gender" class="form-control">
+            <option {{ if eq .mahasiswa.Gender `M` }} selected {{ end }} value="M">Male</option>
+            <option {{ if eq .mahasiswa.Gender `F` }} selected {{ end }} value="F">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Birthplace</label>
+          <input
+            type="text"
+            name="txt_birthplace"
+            class="form-control"
+            value="{{ .mahasiswa.Birthplace }}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Birthdate</label>
+          <input
+            type="date"
+            name="txt_birthdate"
+            class="form-control"
+            value="{{ .mahasiswa.Birthdate }}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Address</label>
+          <textarea name="txt_address" class="form-control">{{ .mahasiswa.Address }}</textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        {{ if .mahasiswa.Id }}
+        <input type="hidden" name="txt_id" value="{{ .mahasiswa.Id }}" />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">Edit Data</button>
+        {{ else }}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">Submit Data</button>
+        {{ end }}
+      </div>
+    </form>
+  </div>
+</div>
